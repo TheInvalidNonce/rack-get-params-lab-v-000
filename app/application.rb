@@ -23,7 +23,7 @@ class Application
         end
       end
     elsif req.match(/add/)
-      @@items.handle_search(search_term)  
+      @@items.include?(handle_search(search_term))
     else
       resp.write "Path Not Found"
     end
