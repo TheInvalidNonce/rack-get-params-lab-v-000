@@ -21,7 +21,12 @@ class Application
         @@cart.each { |item| resp.write "#{item}\n" }
       end
     elsif req.path.match(/add/)
-      handle_search(search_term)
+      req.params.each_value do |item|
+        if @@items.include?(item)
+          @@cart << item
+          resp.write "added #{item}"
+        else
+          "We don't have that item"
     else
       resp.write "Path Not Found"
     end
